@@ -1,11 +1,18 @@
-<h1>Welcome#welcome_message</h1>
-<p>Find me in app/views/welcome/welcome_message.html.erb</p>
 <h2><%= "Welcome User : #{@first_name}"%></h2>
 
 <h1>The List!</h1>
-<%= Gossip.all.first %>
-      <% Gossip.all.each_with_index do |gossip, index| %><p>
-        <%= gossip.user %> <br/>
-        <%= gossip.title %> <br/></p>
-      <a href="/ il nous faut le nouveau lien/<%= index + 1 %>">Rumour<%= index +1 %></a>
+
+
+
+<div class="card-body text-center mx-auto" style="width: 12rem; ">
+  <% Gossip.all.each_with_index do |gossip, index|  %>
+            <div class="card text-center" style="width: 18rem;">
+                  <h4 class="card-title"> <%= gossip.title %></h4>
+                  <h5 class="card-title">  <%= gossip.user.first_name %></h5>
+                  <%= link_to "Rumor n°#{index + 1}", dyn_pages_rumor_path(index + 1), class:"btn btn-primary" %>
+            </div>
+<br>
       <% end %>
+</div>
+    
+  

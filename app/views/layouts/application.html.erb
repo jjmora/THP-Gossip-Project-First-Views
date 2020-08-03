@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Thegossipproject</title>
+  <title>The Gossip Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -27,7 +27,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class=current></a>
-          </li>>
+          </li>
           <li class="nav-item">
             <%= link_to "Contact", static_contact_path, class: "nav-link" %>
           </li>
@@ -51,12 +51,14 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Hello, world!</h1>
-          <p>The gossip Projetct vu par la team</p>
+          <p>The Gossip Project vu par la team</p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
 
+
   
+
     <%= yield %>
 
     
