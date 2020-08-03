@@ -1,0 +1,11 @@
+<h1>Welcome#welcome_message</h1>
+<p>Find me in app/views/welcome/welcome_message.html.erb</p>
+<h2><%= "Welcome User : #{@first_name}"%></h2>
+
+<h1>The List!</h1>
+<%= Gossip.all.first %>
+      <% Gossip.all.each_with_index do |gossip, index| %><p>
+        <%= gossip.user %> <br/>
+        <%= gossip.title %> <br/></p>
+      <a href="/ il nous faut le nouveau lien/<%= index + 1 %>">Rumour<%= index +1 %></a>
+      <% end %>
