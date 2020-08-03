@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= gossip.title %></h5>
           <p class="card-text"><%= gossip.user.first_name %></p>
-          <%= link_to "Rumor n°#{index + 1}", dyn_pages_rumor_path(index + 1), class:"btn btn-primary" %>
+          <%= link_to "Rumor n°#{gossip.id}", dyn_pages_rumor_path(gossip.id), class:"btn btn-primary" %>
         </div>
       </div>
       <br/>

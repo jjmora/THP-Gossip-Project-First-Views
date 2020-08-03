@@ -1,24 +1,16 @@
-# README
+The Gossip Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+First Views
 
-Things you may want to cover:
+* For testing clone the repo
+* Bundel install
+* Check if all the migrations are up
+* Create the database
+* Seed => db:seed
+* Open a Rails Server and open your http://localhost:3000/
 
-* Ruby version
 
-* System dependencies
+In order to test the Welcome/user functionality:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+open: http://localhost:3000/welcome/Leo
+(and change the word Leo for whathever name do you prefer)
