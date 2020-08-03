@@ -17,4 +17,12 @@ class DynPagesController < ApplicationController
     puts "User: #{@id}"
   end
 
+  def gossiper_all_gossips
+    @id = params[:id]
+    puts "All gossips : #{@id}"
+    data = User.find(@id)
+    @user_name = data.first_name
+    puts "Data #{@user_name}"
+  end
+
 end

@@ -1,0 +1,29 @@
+<div class="div_text_centered">
+  <h1>All the gossips from : <%= @user_name %></h1>
+
+  
+
+
+  <% i = 1 %>
+  <div class="row">
+    <% Gossip.all.each_with_index do |gossip, index|  %>
+      <% if User.find(@id).id == gossip.user_id  %>
+        <div class="col-sm-4">
+          <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title"><%= "Gossip #{i}"%></h5>
+                <br>
+                <p class="card-text"><%= gossip.user.first_name %></p>
+                <%= gossip.content %>
+                <% i += 1 %>
+                <br><br>
+            </div>
+          </div>
+          <br/>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
