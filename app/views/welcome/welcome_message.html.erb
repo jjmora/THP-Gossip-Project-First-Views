@@ -1,18 +1,20 @@
-<h2><%= "Welcome User : #{@first_name}"%></h2>
+<h2 class="h1_welcome"><%= "Welcome \" #{@first_name}\" "%></h2>
+<p class="h1_welcome">(Select a user in the browser to test: Ex: /welcome/Leo)</p>
 
-<h1>The List!</h1>
-
-
-
-<div class="card-body text-center mx-auto" style="width: 12rem; ">
+<h1 class="h1_welcome">Here you can see all the Gossips!</h1>
+<h3 class="h1_welcome"><%= "Today you can find #{@gossip_count} gossips" %></h3>
+<hr>
+<div class="row">
   <% Gossip.all.each_with_index do |gossip, index|  %>
-            <div class="card text-center" style="width: 18rem;">
-                  <h4 class="card-title"> <%= gossip.title %></h4>
-                  <h5 class="card-title">  <%= gossip.user.first_name %></h5>
-                  <%= link_to "Rumor n°#{index + 1}", dyn_pages_rumor_path(index + 1), class:"btn btn-primary" %>
-            </div>
-<br>
-      <% end %>
+    <div class="col-sm-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text"><%= gossip.user.first_name %></p>
+          <%= link_to "Rumor n°#{index + 1}", dyn_pages_rumor_path(index + 1), class:"btn btn-primary" %>
+        </div>
+      </div>
+      <br/>
+    </div>
+  <% end %>
 </div>
-    
-  
