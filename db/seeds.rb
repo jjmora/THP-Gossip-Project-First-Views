@@ -23,7 +23,7 @@ end
 end
 
 20.times do |x|
-  gossip = Gossip.create!(title: Faker::Lorem.paragraph_by_chars(number: 35, supplemental: false),content: Faker::Lorem.paragraph_by_chars(number: 80, supplemental: false), user_id: User.all.sample.id)
+  gossip = Gossip.create!(title: Faker::Lorem.paragraph_by_chars(number: 14, supplemental: false),content: Faker::Lorem.paragraph_by_chars(number: 80, supplemental: false), user_id: User.all.sample.id)
 end
 
 20.times do |x|

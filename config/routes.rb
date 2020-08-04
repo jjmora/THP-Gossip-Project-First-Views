@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  resources :gossips
+
   get 'dyn_pages_controller/gossiper_all_gossips'
   get '/', to: 'welcome#welcome_message', as: 'welcome'
   get '/static/team', to: 'static#team'
@@ -12,4 +15,9 @@ Rails.application.routes.draw do
 
   get 'welcome/:first_name', to: 'welcome#welcome_message'
 
+  
 end
+
+# $ rails g controller message show
+
+# get 'message/:user_entry', to: 'message#show'

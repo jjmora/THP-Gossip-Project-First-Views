@@ -8,5 +8,7 @@ class WelcomeController < ApplicationController
     puts "User: #{@first_name}"
     @gossip_count = Gossip.all.count
     puts "count #{@gossip_count}"
+    @gossip = Gossip.new
   end
 end
+
