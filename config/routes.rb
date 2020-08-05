@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :gossips
 
   get 'dyn_pages_controller/gossiper_all_gossips'
-  get '/', to: 'welcome#welcome_message', as: 'welcome'
+  get '/', to: 'gossips#index'
   get '/static/team', to: 'static#team'
   get '/static/contact', to: 'static#contact'
 
