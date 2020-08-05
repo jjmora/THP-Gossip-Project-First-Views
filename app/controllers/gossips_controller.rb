@@ -16,10 +16,6 @@ class GossipsController < ApplicationController
     puts "$" * 60
     @id = params[:id]
     puts "User: #{@id}"
-    @comment = Comment.new(content: params[:content], author_id: 21)
-    if @comment.save
-      render "show", :notice => "User saved"
-    end
   end
 
   def edit
@@ -34,10 +30,9 @@ class GossipsController < ApplicationController
   end
 
   def create
-    puts "$" * 60
-    puts params
     @gossip = Gossip.new(post_params)
     @gossip.user_id = 21
+    p @gossip
     if @gossip.save
       render "index", :notice => "User saved"
     else
@@ -49,10 +44,6 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
     redirect_to gossips_path
-  end
-
-  def create_comment
-
   end
 
   private
