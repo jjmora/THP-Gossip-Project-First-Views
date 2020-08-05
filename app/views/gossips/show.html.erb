@@ -15,3 +15,30 @@
   <hr>
 
 </div>
+
+<h2>Comments section</h2>
+<div class="row">
+  <% Gossip.find(@id).comments.each do |comment|  %>
+    <div class="col-sm-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title"><%= comment.author.first_name%> <%= comment.author.last_name%></h5>
+          <p class="card-text"><%= comment.content %></p>
+        </div>
+      </div>
+      <br/>
+    </div>
+  <% end %>
+</div>
+
+<div>
+<h6>Add a comment !</h6>
+<%= form_tag url_for(action: 'show'), method: "post" do %>
+  <%= text_area_tag 'content'%>
+  <br /> <br />
+
+  <%= submit_tag "Post comment", {class: "btn btn-primary"} %>
+  <br><br>
+<% end %>
+
+</div>

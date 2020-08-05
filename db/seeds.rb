@@ -37,3 +37,13 @@ end
 10.times do |x|
   pm = PrivateMessage.create!(recipient_id: User.all.sample.id, sender_id: User.all.sample.id, content: Faker::Lorem.paragraph_by_chars(number: 35, supplemental: false))
 end
+
+Gossip.all.each do |comments|
+  5.times do
+    comment = Comment.create(
+      content: Faker::Quotes::Shakespeare.hamlet_quote,
+      author_id: User.find(rand(User.first.id..User.last.id)).id,
+      gossip_id: comments.id
+    )
+  end
+end
