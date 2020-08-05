@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-
 User.destroy_all
 City.destroy_all
 Gossip.destroy_all
@@ -14,15 +13,14 @@ Tag.destroy_all
 PrivateMessage.destroy_all
 
 10.times do |x|
-  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quotes::Shakespeare.hamlet_quote, email: Faker::Internet.email, age: Faker::Number.between(from: 18, to: 80))
+  city = City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
 end
-
-User.create!(first_name: "anonymous", last_name: "anonymous last name", description: "this is an anonymous user", email: "anonymous@anonumous.com", age: Faker::Number.between(from: 18, to: 80))
-
 
 10.times do |x|
-  city = City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code, user_id: User.all.sample.id)
+  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quotes::Shakespeare.hamlet_quote, email: Faker::Internet.email, age: Faker::Number.between(from: 18, to: 80), city_id: City.all.sample.id)
 end
+
+User.create!(first_name: "anonymous", last_name: "anonymous last name", description: "this is an anonymous user", email: "anonymous@anonumous.com", age: Faker::Number.between(from: 18, to: 80), city_id: City.all.sample.id)
 
 20.times do |x|
   gossip = Gossip.create!(title: Faker::Lorem.paragraph_by_chars(number: 14, supplemental: false),content: Faker::Lorem.paragraph_by_chars(number: 80, supplemental: false), user_id: User.all.sample.id)
