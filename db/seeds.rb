@@ -14,12 +14,11 @@ Tag.destroy_all
 PrivateMessage.destroy_all
 
 10.times do |x|
-  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quotes::Shakespeare.hamlet_quote, email: Faker::Internet.email, age: Faker::Number.between(from: 18, to: 80))
+  city = City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code)
 end
 
-
 10.times do |x|
-  city = City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code, user_id: User.all.sample.id)
+  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quotes::Shakespeare.hamlet_quote, email: Faker::Internet.email, age: Faker::Number.between(from: 18, to: 80), city_id: City.find(rand(City.first.id..City.last.id)).id)
 end
 
 20.times do |x|
