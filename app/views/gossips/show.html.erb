@@ -1,6 +1,6 @@
 <div class="div_text_centered">
   
-  <h6>Gossiper Id : <%= Gossip.find(@id).user_id %></h6>
+  <h6>Gossiper Id : <%= @user_id %></h6>
   
   <h2>Gossiper Name</h2>
     <%= Gossip.find(@id).user.first_name %></p>
@@ -14,8 +14,7 @@
   <h5>Publishing Date</h5>
     <p><%= Gossip.find(@id).created_at %></p><br/>
 
-
-  <%= link_to "Who is Gossiper #{Gossip.find(@id).user.first_name}?", dyn_pages_gossiper_path(Gossip.find(@id).user.id), class:"btn btn-primary" %>
+  <a href="<%= user_path(@user_id) %>" class="btn btn-primary">Who is Gossiper <%= User.find(@user_id).first_name %>?</a>
 
   <hr>
 

@@ -1,34 +1,24 @@
-class GossipsController < ApplicationController
+class UsersController < ApplicationController
+
   def index
     # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
+    @users = User.all
   end
-  
+
   def show
+    # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
     @id = params[:id]
-    @user_id = Gossip.find(@id).user_id
-
-    puts "$" * 60 #ça affiche une ligne de 60 symboles $ facilement visible dans le terminal
-    puts params #tu sais que params doit s'afficher entre les 2
-    puts "$" * 60
-    puts "user_id = #{@user_id}"
-    
   end
-
 
   def new
-    @gossip = Gossip.new
+    # Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+    @user = User.new
   end
 
   def create
-    puts "$" * 60
-    puts params
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: User.all.last.id)
-    #modifier le user_ id pour charger le user.first_name = anonymous qui sera cree avec le seed
-    if @gossip.save
-      render "/welcome/welcome_message", :notice => "User saved"
-    else
-      render "new", :alert => 'Alert message!'
-    end
+    # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
+    # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
+    # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
   end
 
   def edit
@@ -45,4 +35,6 @@ class GossipsController < ApplicationController
     # Méthode qui récupère le potin concerné et le détruit en base
     # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
   end
+
+
 end
