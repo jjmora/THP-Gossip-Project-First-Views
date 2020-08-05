@@ -17,6 +17,8 @@ PrivateMessage.destroy_all
   user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quotes::Shakespeare.hamlet_quote, email: Faker::Internet.email, age: Faker::Number.between(from: 18, to: 80))
 end
 
+User.create!(first_name: "anonymous", last_name: "anonymous last name", description: "this is an anonymous user", email: "anonymous@anonumous.com", age: Faker::Number.between(from: 18, to: 80))
+
 
 10.times do |x|
   city = City.create!(name: Faker::Address.city, zip_code: Faker::Address.zip_code, user_id: User.all.sample.id)
