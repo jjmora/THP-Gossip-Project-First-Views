@@ -32,7 +32,7 @@ class GossipsController < ApplicationController
   def create
     puts "$" * 60
     puts params
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: 94)
+    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: 1)
     if @gossip.save
       render "index", :notice => "User saved"
     else
@@ -40,6 +40,11 @@ class GossipsController < ApplicationController
     end
   end
 
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to gossips_path
+  end
 end
 
 
