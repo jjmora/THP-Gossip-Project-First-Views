@@ -9,6 +9,7 @@
     <p><%= Gossip.find(@id).created_at %></p><br/>
 
   <%= link_to "Who is Gossiper #{Gossip.find(@id).user.first_name}?", user_path(Gossip.find(@id).user.id), class:"btn btn-primary" %>
+  <%= link_to "Edit the Gossip", edit_gossip_path(Gossip.find(@id).id), class:"btn btn-primary" %>
 
   <hr>
 

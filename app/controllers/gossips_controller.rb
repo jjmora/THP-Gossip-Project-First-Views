@@ -2,6 +2,7 @@ class GossipsController < ApplicationController
   def index
     @gossip1 = Gossip.all
     @gossip = Gossip.new
+  
   end
 
   def new
@@ -15,6 +16,17 @@ class GossipsController < ApplicationController
     puts "$" * 60
     @id = params[:id]
     puts "User: #{@id}"
+  end
+
+  def edit
+    @gossips = Gossip.find(params[:id])
+  end
+
+  def update
+    @gossips = Gossip.find(params[:id])
+    post_params = params.require(:gossip).permit(:title, :content)
+    @gossips.update(post_params)
+    redirect_to gossips_path
   end
 
   def create
