@@ -6,9 +6,7 @@
 <% end %> 
 
 
-
-<h2 class="h1_welcome"><%= "Welcome \" #{@first_name}\" "%></h2>
-<p class="h1_welcome">(Select a user in the browser to test: Ex: /welcome/Leo)</p>
+<h2 class="h1_welcome"><%= "Welcome #{current_user.first_name} "%></h2>
 
 <h1 class="h1_welcome">Here you can see all the Gossips!</h1>
 <h3 class="h1_welcome"><%= "Today you can find #{@gossip_count} gossips" %></h3>

@@ -35,10 +35,21 @@
             <%= link_to "New Gossip", new_gossip_path, class: "nav-link disable" %>
           </li>                  
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <ul class="navbar-nav mr-left">
+        <%if current_user == nil %>
+          <li class="nav-item">
+            <%= link_to "S'inscrire", new_user_path, class: "nav-link disable" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Se connecter", new_session_path, class: "nav-link disable" %>
+          </li>
+          <%else%>
+          <li class="nav-item">
+            <%= link_to "Se déconnecter", session_path(session.id), method: :delete, class: "nav-link disable" %>
+          </li>
+          <%end%>
+        </ul>
+
       </div>
     </nav>
 
@@ -58,7 +69,7 @@
     </main>
 
     <footer class="footer div_text_centered">
-      <p>&copy; Moussaillons Juan, Daniel, Kevin, David summer 2020</p>
+      <p>&copy; Moussaillons Juan, Daniel, Kevin, David - Summer 2020</p>
     </footer>
 
   </body>

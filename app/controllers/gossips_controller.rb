@@ -1,8 +1,27 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:index, :new, :edit]
+  before_action :auth, only: [:update, :destroy, :edit]
   def index
-    @gossip1 = Gossip.all
+    @gossip = Gossip.all
     @gossip = Gossip.new
-  
+    
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
+
+  def auth
+    @gossips = Gossip.find(params[:id])
+    if current_user.id == @gossips.user.id
+      puts 'yey'
+    else
+      redirect_to gossips_path
+      puts 'oh no'
+    end
   end
 
   def new
@@ -10,16 +29,20 @@ class GossipsController < ApplicationController
   end
 
   def show
-    puts "#{params}"
-    puts "$" * 60 #ça affiche une ligne de 60 symboles $ facilement visible dans le terminal
-    puts params #tu sais que params doit s'afficher entre les 2
-    puts "$" * 60
     @id = params[:id]
-    puts "User: #{@id}"
   end
 
   def edit
+    @id = params[:id]
     @gossips = Gossip.find(params[:id])
+    puts @gossips.id
+    puts current_user.id
+    if current_user.id == @gossips.user.id
+      puts 'yey'
+    else
+      redirect_to gossips_path
+      puts 'oh no'
+    end
   end
 
   def update
@@ -31,7 +54,7 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(post_params)
-    @gossip.user_id = 21
+    @gossip.user_id = current_user.id
     p @gossip
     if @gossip.save
       render "index", :notice => "User saved"
@@ -50,7 +73,5 @@ class GossipsController < ApplicationController
   def post_params
     params.permit(:title, :content)
   end
+
 end
-
-
-

@@ -9,9 +9,11 @@
     <p><%= Gossip.find(@id).created_at %></p><br/>
 
   <%= link_to "Who is Gossiper #{Gossip.find(@id).user.first_name}?", user_path(Gossip.find(@id).user.id), class:"btn btn-primary" %>
-  <%= link_to "Edit the Gossip", edit_gossip_path(Gossip.find(@id).id), class:"btn btn-primary" %>
-  <%= link_to "Supprimer le Gossip", gossip_path(Gossip.find(@id).id), class:"btn btn-primary",  data: {confirm: 'Etes-vous sur?'}, method:"DELETE"%>
-
+  
+  <%if current_user.id == Gossip.find(@id).user.id%>
+  <%= link_to "Edit the Gossip", edit_gossip_path(Gossip.find(@id).id), class:"btn btn-secondary" %>
+  <%= link_to "Supprimer le Gossip", gossip_path(Gossip.find(@id).id), class:"btn btn-danger",  data: {confirm: 'Etes-vous sur?'}, method:"DELETE"%>
+  <%end%>
   <hr>
 
 </div>
@@ -32,12 +34,13 @@
 </div>
 
 <div>
-<h6>Add a comment !</h6>
-<form action= <%= gossips_comment_create_path %> method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="text" id="content" name="content">
-  <input type="hidden" id="gossip_id" value="@id">
-  <input type="submit" value="Valider">
-</form>
-
+  <form action= <%= gossips_comment_create_path %> method="POST" >
+    <div class ="form-group">
+      <label for="exampleInputEmail1">Add a comment !</label>
+      <input type="hidden" name="authenticity_token" placeholder="Your comment" value="<%= form_authenticity_token %>">
+      <input type="text" id="content" name="content" class="form-control">
+      <input type="hidden" id="gossip_id" value="@id">
+    </div>
+  <input type="submit" value="Valider" class ="btn btn-secondary">
+  </form>
 </div>
