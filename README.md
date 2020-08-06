@@ -1,9 +1,11 @@
 The Gossip Project
 
-First Views
+Moussaillons Juan, Daniel, Kevin, David summer 2020
+
+First Views + CRUD (Create, Edit, Delete)
 
 * For testing clone the repo
-* Bundel install
+* Bundle install
 * Check if all the migrations are up
 * Create the database
 * Seed => db:seed

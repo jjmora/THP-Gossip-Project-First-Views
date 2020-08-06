@@ -17,6 +17,8 @@
   <a href="<%= user_path(@user_id) %>" class="btn btn-info">Who is Gossiper <%= User.find(@user_id).first_name %>?</a>
     
   <a href="<%= edit_gossip_path(@id) %>" class="btn btn-success">Edit this Gossip (Id: <%= Gossip.find(@id).id %>)</a>
+
+  <%= link_to "Delete the Gossip (Id: #{Gossip.find(@id).id})", gossip_path(Gossip.find(@id).id), class:"btn btn-danger",  data: {confirm: 'Are you sur?'}, method:"DELETE"%>
   <hr>
 
 </div>
