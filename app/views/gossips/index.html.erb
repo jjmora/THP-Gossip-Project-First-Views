@@ -1,0 +1,14 @@
+<div class="row">
+  <% Gossip.all.each_with_index do |gossip, index|  %>
+    <div class="col-sm-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text"><%= gossip.user.first_name %></p>
+          <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Gossip nº <%= gossip.id %></a>
+        </div>
+      </div>
+      <br/>
+    </div>
+  <% end %>
+</div>
