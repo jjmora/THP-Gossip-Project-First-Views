@@ -1,6 +1,6 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, only: [:index, :new, :edit]
-  before_action :auth, only: [:update, :destroy, :edit]
+  before_action :authenticate_current_user, only: [:update, :destroy, :edit]
   def index
     @gossip = Gossip.all
     @gossip = Gossip.new
@@ -14,7 +14,7 @@ class GossipsController < ApplicationController
     end
   end
 
-  def auth
+  def authenticate_current_user
     @gossips = Gossip.find(params[:id])
     if current_user.id == @gossips.user.id
       puts 'yey'
@@ -37,12 +37,6 @@ class GossipsController < ApplicationController
     @gossips = Gossip.find(params[:id])
     puts @gossips.id
     puts current_user.id
-    if current_user.id == @gossips.user.id
-      puts 'yey'
-    else
-      redirect_to gossips_path
-      puts 'oh no'
-    end
   end
 
   def update
@@ -50,7 +44,7 @@ class GossipsController < ApplicationController
     post_params = params.require(:gossip).permit(:title, :content)
     @gossips.update(post_params)
     redirect_to gossips_path
-  end
+  end 
 
   def create
     @gossip = Gossip.new(post_params)

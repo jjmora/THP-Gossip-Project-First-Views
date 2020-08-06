@@ -11,8 +11,8 @@
   <%= link_to "Who is Gossiper #{Gossip.find(@id).user.first_name}?", user_path(Gossip.find(@id).user.id), class:"btn btn-primary" %>
   
   <%if current_user.id == Gossip.find(@id).user.id%>
-  <%= link_to "Edit the Gossip", edit_gossip_path(Gossip.find(@id).id), class:"btn btn-secondary" %>
-  <%= link_to "Supprimer le Gossip", gossip_path(Gossip.find(@id).id), class:"btn btn-danger",  data: {confirm: 'Etes-vous sur?'}, method:"DELETE"%>
+    <%= link_to "Edit the Gossip", edit_gossip_path(Gossip.find(@id).id), class:"btn btn-secondary" %>
+    <%= link_to "Supprimer le Gossip", gossip_path(Gossip.find(@id).id), class:"btn btn-danger",  data: {confirm: 'Etes-vous sur?'}, method:"DELETE"%>
   <%end%>
   <hr>
 
