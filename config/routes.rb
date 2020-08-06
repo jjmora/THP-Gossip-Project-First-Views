@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   resources :gossips
   resources :users
+  resources :cities
 
   get 'dyn_pages_controller/gossiper_all_gossips'
   get '/', to: 'welcome#welcome_message', as: 'welcome'

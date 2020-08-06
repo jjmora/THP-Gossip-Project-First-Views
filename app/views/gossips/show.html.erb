@@ -10,11 +10,12 @@
   <h4>Contenu</h4>
     <p><%= Gossip.find(@id).content %></p><br/>
   <h4>City</h4>
-    <p><%= City.find(Gossip.find(@id).user.city_id).name %></p><br/>
+    <p><a href="<%= city_path(@city_id) %>" class="btn btn-primary">City <%= @city  %></a><br/>
   <h5>Publishing Date</h5>
     <p><%= Gossip.find(@id).created_at %></p><br/>
 
   <a href="<%= user_path(@user_id) %>" class="btn btn-primary">Who is Gossiper <%= User.find(@user_id).first_name %>?</a>
+    
 
   <hr>
 
