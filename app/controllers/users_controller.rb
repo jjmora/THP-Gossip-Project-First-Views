@@ -14,8 +14,8 @@ class UsersController < ApplicationController
       age: params[:age],
       description: params[:description],
       email: params[:email], 
-      password: params[:password], 
-      first_name: 90
+      password: params[:password],
+      city_id: City.all.sample
     )
     p @user
     
